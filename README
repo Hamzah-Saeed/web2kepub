@@ -1,3 +1,5 @@
-Personal Project that enables me to scrape the HTML content found on an online site, and allow me to convert it into a KEPUB format and downlaoding it onto my Computer. 
+Personal Project that enables me to scrape the HTML content found on an online site, and allow me to convert it into a KEPUB format and downlaoding it onto my Computer as a KEPUB, which can then be transferred onto a Kobo device.
+Currently, this code only works on sites where the correct identifiers are selected for the desired content, and likely should be modified if different sites have to be scraped.
+Requires the installation of the Calibre app, the path to the application must be modified to match the code.
 
 I do not condone scraping sites illegally, this is only for personal use, on sites that permit web scraping.
