@@ -1,0 +1,10 @@
+# Temporary folder
+temp/
+
+# Generated ebooks
+*.epub
+*.kepub.epub
+
+# Python cache
+__pycache__/
+*.pyc
