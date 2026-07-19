@@ -59,7 +59,7 @@ def fetch_page(driver, url: str) -> str:
             return False
 
     content_div = wait.until(content_loaded) 
-    time.sleep(random.uniform(2, 5)) #mimics reading
+    #time.sleep(random.uniform(2, 5)) #mimics reading
 
     # Remove ads + junk using JS before grabbing HTML from the site im using
     driver.execute_script("""
@@ -76,7 +76,7 @@ def fetch_single_chapter(driver, base_url, ch):
 
 
     url = f"{base_url}chapter/{ch}/"
-    time.sleep(random.uniform(1, 3)) #Delay to prevent getting rate limited, modify if too slow 
+    #time.sleep(random.uniform(1, 3)) #Delay to prevent getting rate limited, modify if too slow 
     html = fetch_page(driver, url)
     soup = BeautifulSoup(html, "html.parser")
 
@@ -154,14 +154,14 @@ def url_to_kepub(url: str) -> Path:
         driver.quit()
 
     epub_path = build_epub(chapter_data, job_id)
+    kepub_tmp = TEMP_DIR / f"{job_id}.kepub"
     kepub_path = TEMP_DIR / f"{job_id}.kepub.epub"
 
     # Convert --> KEPUB, ensure the path is correct.
     subprocess.run([
         "/Applications/calibre.app/Contents/MacOS/ebook-convert",
         str(epub_path),
-        str(kepub_path),
+        str(kepub_tmp),
         "--output-profile=kobo"
     ], check=True)
-
-    return kepub_path
+    return kepub_tmp.rename(kepub_path)
